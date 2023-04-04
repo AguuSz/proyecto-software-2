@@ -15,6 +15,11 @@ body {
 	font-family: "Poppins", sans-serif;
 }
 
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
 .header {
 	padding: 20px 40px;
 	background-color: var(--header-color);
@@ -78,7 +83,7 @@ body {
 	backdrop-filter: blur(20px) opacity(1);
 }
 
-.title {
+.big-title {
 	font-size: 150px;
 	margin: 0;
 	font-weight: 300;
@@ -112,4 +117,30 @@ body {
 
 .white-text {
 	color: var(--white);
+}
+
+/* Seccion matchmaking */
+.background {
+	background-color: var(--background-color);
+	width: 100vw;
+	height: 100vh;
+	padding: 10px;
+}
+
+.filters {
+	margin: 0 auto;
+	width: 70vw;
+	background-color: white;
+	padding: 40px 100px;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 20px;
+}
+
+.form-item {
+	font-size: 20px;
+}
+
+select {
+	font-size: 20px;
 }
