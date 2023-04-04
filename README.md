@@ -1,4 +1,4 @@
-# Proyecto integrador Ing. Soft II
+# Proyecto integrador Ing. Web II
 
 Repo de la materia donde se va a estar guardando los cambios que le haremos a la pagina. Se van a estar trabajando con herramientas tales como Figma para el diseño, y Trello para la gestion de las tareas (mas adelante se estaran adjuntando capturas de los mismos).
 
