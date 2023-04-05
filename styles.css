@@ -10,7 +10,7 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	overflow-y: hidden;
+	overflow-y: none;
 	overflow-x: hidden;
 	font-family: "Poppins", sans-serif;
 }
@@ -144,3 +144,35 @@ a {
 select {
 	font-size: 20px;
 }
+
+  /* Estilos del título */
+  .h1-leaderboard {
+    color: white;;
+    font-size: 48px;
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  /* Estilos de la tabla */
+  .table-leaderboard {
+    margin: 0 auto;
+    width: 80%;
+    background-color: #230e50;
+    border-collapse: collapse;
+  }
+  
+  .table-leaderboard th {
+    background-color: #361480;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .table-leaderboard td {
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+  }
