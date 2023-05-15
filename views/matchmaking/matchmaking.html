@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+			crossorigin="anonymous"
+		/>
+		<title>Matchmaking</title>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html">
+					<img
+						src="https://cdn.discordapp.com/attachments/688516952289050636/1090743461403185182/image.png"
+						alt="Logo"
+						width="128"
+						height="76"
+						class="d-inline-block align-text-top"
+					/>
+				</a>
+				<div
+					class="collapse navbar-collapse justify-content-end"
+					id="navbarNav"
+				>
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="matchmaking.html"
+								>Matchmaking</a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="leaderboard.html">Leaderboard</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="my-profile.html">Profile</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Seccion filtros -->
+		<div class="container">
+			<div class="card px-4 pb-4 mt-4">
+				<div class="text-center my-3">
+					<h1>Matchmaking filters</h1>
+					<p>Find a lobby that suits you</p>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						<label for="filterPlatform" class="form-label">Platform</label>
+						<select id="filterPlatform" class="form-select">
+							<option selected disabled>Choose...</option>
+							<option value="pc">PC</option>
+							<option value="ps4">PS4</option>
+							<option value="xbox">XBOX</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label for="filterRank" class="form-label">Rank</label>
+						<select id="filterRank" class="form-select">
+							<option selected disabled>Choose...</option>
+							<option value="bronze">Bronze</option>
+							<option value="silver">Silver</option>
+							<option value="gold">Gold</option>
+							<option value="platinum">Platinum</option>
+							<option value="diamond">Diamond</option>
+							<option value="champion">Champion</option>
+							<option value="grand-champion">Grand Champion</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label for="filterDivision" class="form-label">Division</label>
+						<select id="filterDivision" class="form-select">
+							<option selected disabled>Choose...</option>
+							<option value="1">I</option>
+							<option value="2">II</option>
+							<option value="3">III</option>
+							<option value="4">IV</option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<label for="filterRegion" class="form-label">Region</label>
+						<select id="filterRegion" class="form-select">
+							<option selected disabled>Choose...</option>
+							<option value="eu">EU</option>
+							<option value="na">NA</option>
+							<option value="sam">SAM</option>
+							<option value="oce">OCE</option>
+							<option value="asia">ASIA</option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<label for="filterMMR" class="form-label">MMR</label>
+						<input type="number" class="form-control" id="filterMMR" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col text-center mt-4">
+						<button type="button" class="btn btn-primary me-2">Apply</button>
+						<button
+							type="button"
+							class="btn btn-success"
+							data-bs-toggle="modal"
+							data-bs-target="#newLobbyModal"
+						>
+							Create new lobby
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Seccion lobbys -->
+		<div class="card col-11 my-5 mx-auto">
+			<h1 class="text-center mt-2">Lobbys</h1>
+			<div class="row p-4 g-5" id="lobbys">
+				<!-- Lobby 1 -->
+				<div class="col-2">
+					<div class="card text-center px-0">
+						<div class="card-header">AguuSz's lobby</div>
+						<div class="card-body">
+							<h6 class="card-subtitle mb-3 text-body-secondary">SAM</h6>
+							<h6 class="card-subtitle mb-3 text-body-secondary">Diamond I</h6>
+							<img
+								src="../../src/img/profile_pic_icon.png"
+								alt="profile_pic_icon"
+								class="rounded"
+								width="40px"
+							/>
+							<img
+								src="../../src/img/profile_pic_icon.png"
+								alt="profile_pic_icon"
+								class="rounded"
+								width="40px"
+							/>
+							<img
+								src="../../src/img/profile_pic_icon.png"
+								alt="profile_pic_icon"
+								class="rounded"
+								width="40px"
+							/>
+							<h5 class="my-3">VS</h5>
+							<img
+								src="../../src/img/profile_pic_icon.png"
+								alt="profile_pic_icon"
+								class="rounded"
+								width="40px"
+							/>
+							<img
+								src="../../src/img/profile_pic_icon.png"
+								alt="profile_pic_icon"
+								class="rounded"
+								width="40px"
+							/>
+							<img
+								src="../../src/img/profile_pic_icon.png"
+								alt="profile_pic_icon"
+								class="rounded"
+								width="40px"
+							/>
+							<div class="row mx-auto">
+								<a href="#" class="btn btn-primary mt-3">Join lobby!</a>
+							</div>
+						</div>
+						<div class="card-footer text-body-secondary">5 minutes ago</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Create new lobby - Modal -->
+		<div
+			class="modal fade"
+			id="newLobbyModal"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">
+							Create new lobby
+						</h1>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+
+					<div class="modal-body">
+						<form id="newLobbyModalForm">
+							<div class="row mb-2">
+								<label for="platform" class="form-label">Platform</label>
+								<select id="platform" class="form-select">
+									<option selected disabled>Choose...</option>
+									<option value="pc">PC</option>
+									<option value="ps4">PS4</option>
+									<option value="xbox">XBOX</option>
+								</select>
+							</div>
+							<div class="row mb-2">
+								<label for="rank" class="form-label">Rank</label>
+								<select id="rank" class="form-select">
+									<option selected disabled>Choose...</option>
+									<option value="bronze">Bronze</option>
+									<option value="silver">Silver</option>
+									<option value="gold">Gold</option>
+									<option value="platinum">Platinum</option>
+									<option value="diamond">Diamond</option>
+									<option value="champion">Champion</option>
+									<option value="grand-champion">Grand Champion</option>
+								</select>
+							</div>
+							<div class="row mb-2">
+								<label for="division" class="form-label">Division</label>
+								<select id="division" class="form-select">
+									<option selected disabled>Choose...</option>
+									<option value="1">I</option>
+									<option value="2">II</option>
+									<option value="3">III</option>
+									<option value="4">IV</option>
+								</select>
+							</div>
+							<div class="row mb-2">
+								<label for="region" class="form-label">Region</label>
+								<select id="region" class="form-select">
+									<option selected disabled>Choose...</option>
+									<option value="eu">EU</option>
+									<option value="na">NA</option>
+									<option value="sam">SAM</option>
+									<option value="oce">OCE</option>
+									<option value="asia">ASIA</option>
+								</select>
+							</div>
+							<div class="row">
+								<div class="col-4">
+									<label for="mmr" class="form-label">MMR</label>
+									<input type="number" class="form-control" id="mmr" />
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-danger"
+							data-bs-dismiss="modal"
+						>
+							Cancel
+						</button>
+						<button type="button" class="btn btn-success" id="createLobbyBtn">
+							Create
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Toast que se muestra al crear un lobby de manera exitosa -->
+		<div class="toast-container position-fixed bottom-0 end-0 p-3">
+			<div
+				id="successToast"
+				class="toast align-items-center text-bg-success border-0"
+				role="alert"
+				aria-live="assertive"
+				aria-atomic="true"
+			>
+				<div class="d-flex">
+					<div class="toast-body">Lobby has been created successfuly.</div>
+					<button
+						type="button"
+						class="btn-close btn-close-white me-2 m-auto"
+						data-bs-dismiss="toast"
+						aria-label="Close"
+					></button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Toast que se muestra al haber un error al crear un lobby. Se activa cuando hay campos que faltan completar -->
+		<div class="toast-container position-fixed bottom-0 end-0 p-3">
+			<div
+				id="errorToast"
+				class="toast align-items-center text-bg-danger border-0"
+				role="alert"
+				aria-live="assertive"
+				aria-atomic="true"
+			>
+				<div class="d-flex">
+					<div class="toast-body">
+						There is been an error with some fields, please check.
+					</div>
+					<button
+						type="button"
+						class="btn-close btn-close-white me-2 m-auto"
+						data-bs-dismiss="toast"
+						aria-label="Close"
+					></button>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+			crossorigin="anonymous"
+		></script>
+		<script src="script.js"></script>
+	</body>
+</html>
