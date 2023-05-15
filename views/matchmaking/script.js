@@ -37,6 +37,7 @@ function appendLobby(username) {
 		document.forms["newLobbyModalForm"]["region"].value.toUpperCase();
 	var mmr = document.forms["newLobbyModalForm"]["mmr"].value;
 
+	// Hacemos esto para que se ponga la primer letra en mayúscula
 	rank = rank.charAt(0).toUpperCase() + rank.slice(1);
 
 	const lobbys = document.getElementById("lobbys");
