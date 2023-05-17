@@ -1,40 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>My profile</title>
-	</head>
-	<body>
-		<div class="header">
-			<!-- Este boton sera luego reemplazado por la imagen del logo -->
-			<div class="app-logo">
-				<img
-					src="https://cdn.discordapp.com/attachments/688516952289050636/1090743461403185182/image.png"
-					alt="asd"
-					class="logo"
-				/>
-			</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <title>My profile</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="https://cdn.discordapp.com/attachments/688516952289050636/1090743461403185182/image.png"
+            alt="Logo"
+            width="128"
+            height="76"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="matchmaking.html">Matchmaking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="my-profile.html"
+                >Profile</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1 class="text-center mt-2">Profile</h1>
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-2 border border-secondary rounded bg-secondary-subtle pt-3 pb-4 mx-auto text-center"
+        >
+          <img
+            src="src/img/profile_pic_icon.png"
+            alt="profile_pic_icon"
+            class="rounded pb-2"
+            width="150px"
+          />
+          <div
+            class="btn-group-vertical col-10 mx-auto bg-primary-subtle"
+            role="group"
+            aria-label="Vertical radio toggle button group"
+          >
+            <input
+              type="radio"
+              class="btn-check"
+              name="vbtn-radio"
+              id="vbtn-radio1"
+              checked
+            />
+            <label class="btn btn-outline-primary" for="vbtn-radio1"
+              >Home</label
+            >
+            <input
+              type="radio"
+              class="btn-check"
+              name="vbtn-radio"
+              id="vbtn-radio2"
+            />
+            <label class="btn btn-outline-primary" for="vbtn-radio2"
+              >Titles</label
+            >
+            <input
+              type="radio"
+              class="btn-check"
+              name="vbtn-radio"
+              id="vbtn-radio3"
+            />
+            <label class="btn btn-outline-primary" for="vbtn-radio3"
+              >Stats</label
+            >
+            <input
+              type="radio"
+              class="btn-check"
+              name="vbtn-radio"
+              id="vbtn-radio4"
+            />
+            <label class="btn btn-outline-primary" for="vbtn-radio4"
+              >Settings</label
+            >
+          </div>
+        </div>
 
-			<div class="header-items">
-				<a href="#">
-					<button class="header-item white-text">Leaderboard</button>
-				</a>
-				<a href="#">
-					<button class="header-item white-text">Matchmaking</button>
-				</a>
-				<a href="#">
-					<button class="header-item white-text">Profile</button>
-				</a>
-			</div>
-		</div>
-
-		<div class="foreground">
-			<div class="container">
-				<h1 class="title white-text">My profile</h1>
-
-				<form action=""></form>
-			</div>
-		</div>
-	</body>
+        <div
+          class="col-9 border border-secondary rounded bg-secondary-subtle pt-3 pb-4 m-10"
+        >
+          <div class="border border-primary rounded p-3">
+            <div class="text-left fs-4" id="username">UserName</div>
+            <div class="text-sm-left fs-6" id="joindate">
+              Joined on 30th February 2099
+            </div>
+            <div class="text-sm-left fs-6" id="premium_status">
+              Premium User
+            </div>
+          </div>
+          <div class="border border-secondary rounded text-center">
+            <table class="table table-stripped">
+              <thead class="thead-dark">
+                <h3>Carreer Stats</h3>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Total Wins</th>
+                  <th>Total losses</th>
+                  <th>Total Played</th>
+                </tr>
+                <tr>
+                  <td id="wins">336</td>
+                  <td id="losses">337</td>
+                  <td id="played">670</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="border border-info rounded text-center">
+            <table class="table table-stripped">
+              <thead class="thead-dark">
+                <h3>Rank Stats</h3>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Rank</th>
+                  <th>Elo</th>
+                  <th>Winrate</th>
+                </tr>
+                <tr>
+                  <td id="rank">S</td>
+                  <td id="elo">2200</td>
+                  <td id="winrate">66%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
