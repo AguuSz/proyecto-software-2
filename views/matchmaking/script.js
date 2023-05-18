@@ -52,8 +52,12 @@ function appendLobby(username) {
 
 	// Crear el elemento div con la clase "card-header" y texto "AguuSz's lobby"
 	const divCardHeader = document.createElement("div");
-	divCardHeader.classList.add("card-header");
+	divCardHeader.classList.add("card-header", "pe-1");
 	divCardHeader.textContent = username + "'s lobby";
+	const closeButton = document.createElement("button");
+	closeButton.setAttribute("type", "button");
+	closeButton.classList.add("btn-close", "float-end", "show-if-admin");
+	divCardHeader.appendChild(closeButton);
 
 	// Crear el elemento div con la clase "card-body"
 	const divCardBody = document.createElement("div");
