@@ -6,30 +6,43 @@
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<div class="header">
-			<!-- Este boton sera luego reemplazado por la imagen del logo -->
-			<div class="app-logo">
-				<a href="index.html">
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="../index/index.html">
 					<img
 						src="https://cdn.discordapp.com/attachments/688516952289050636/1090743461403185182/image.png"
-						alt="asd"
-						class="logo"
+						alt="Logo"
+						width="128"
+						height="76"
+						class="d-inline-block align-text-top"
 					/>
 				</a>
+				<div
+					class="collapse navbar-collapse justify-content-end"
+					id="navbarNav"
+				>
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="../matchmaking/matchmaking.html"
+								>Matchmaking</a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" disabled>Leaderboard</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../my-profile/my-profile.html"
+								>Profile</a
+							>
+						</li>
+					</ul>
+				</div>
 			</div>
-
-			<div class="header-items">
-				<a href="leaderboard.html">
-					<button class="header-item white-text">Leaderboard</button>
-				</a>
-				<a href="matchmaking.html">
-					<button class="header-item white-text">Matchmaking</button>
-				</a>
-				<a href="#">
-					<button class="header-item white-text">Profile</button>
-				</a>
-			</div>
-		</div>
+		</nav>
 		<main>
 			<div class="background">
 				<div>

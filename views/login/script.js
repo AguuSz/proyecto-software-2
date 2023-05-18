@@ -3,5 +3,3 @@ function goToHome() {
 	console.log("clicked");
 	window.location.href = "../matchmaking/matchmaking.html";
 }
-
-console.log("asd");
