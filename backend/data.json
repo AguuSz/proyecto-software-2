@@ -1,0 +1,69 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"nickname": "AguuSz",
+			"email": "AguuSz@gmail.com",
+			"password": "password1",
+			"mmr": 2000,
+			"region": "SAM",
+			"division": "Diamond"
+		},
+		{
+			"id": 2,
+			"nickname": "Charky",
+			"email": "Charky@gmail.com",
+			"password": "password2",
+			"mmr": 1500,
+			"region": "SAM",
+			"division": "Gold"
+		},
+		{
+			"id": 3,
+			"nickname": "iClown",
+			"email": "iClown@gmail.com",
+			"password": "password3",
+			"mmr": 2400,
+			"region": "SAM",
+			"division": "Supersonic Legend"
+		},
+		{
+			"id": 4,
+			"nickname": "carl17",
+			"email": "carl17@gmail.com",
+			"password": "password5",
+			"mmr": 1200,
+			"region": "SAM",
+			"division": "Silver"
+		},
+		{
+			"id": 5,
+			"nickname": "Jackz",
+			"email": "Jackz@gmail.com",
+			"password": "password5",
+			"mmr": 1300,
+			"region": "SAM",
+			"division": "Silver"
+		}
+	],
+	"lobbies": [
+		{
+			"id": 1,
+			"name": "Lobby1",
+			"blueTeam": [1, 2],
+			"redTeam": [3, 4]
+		},
+		{
+			"id": 2,
+			"name": "Lobby2",
+			"blueTeam": [5],
+			"redTeam": []
+		},
+		{
+			"id": 3,
+			"name": "Lobby3",
+			"blueTeam": [],
+			"redTeam": []
+		}
+	]
+}
