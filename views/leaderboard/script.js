@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#example').DataTable( {
+  $('#leaderboardTable').DataTable( {
       responsive: {
           details: {
               display: $.fn.dataTable.Responsive.display.modal( {
