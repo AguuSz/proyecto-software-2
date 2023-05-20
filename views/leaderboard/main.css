@@ -1,0 +1,31 @@
+.sort-arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+  }
+  
+  .arrow-up:before {
+    content: "";
+    display: inline-block;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #000;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .arrow-down:before {
+    content: "";
+    display: inline-block;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #000;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  
+  .clicked {
+    color: red;
+  }
+  
