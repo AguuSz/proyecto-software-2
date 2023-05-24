@@ -25,7 +25,11 @@ function isNewLobbyFormValid() {
 	var mmr = document.forms["newLobbyModalForm"]["mmr"].value;
 
 	return (
-		platform != "" && rank != "" && division != "" && region != "" && mmr != ""
+		platform != "Choose..." &&
+		rank != "Choose..." &&
+		division != "Choose..." &&
+		region != "Choose..." &&
+		mmr != "Choose..."
 	);
 }
 
