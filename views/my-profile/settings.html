@@ -62,13 +62,14 @@
 						width="150px"
 					/>
 					<div>
-						<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Home</a>
+						<a href="my-profile.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Home</a>
 					</div>
+					
 					<div>
 						<a href="titles.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="false">Titles</a>
 					</div>
 					<div>	
-						<a href="settings.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="false">Settings</a>
+						<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="false">Settings</a>
 					</div>
 					
 				</div>
@@ -76,52 +77,38 @@
 				<div
 					class="col-9 border border-secondary rounded bg-secondary-subtle pt-3 pb-4 m-10"
 				>
-					<div class="border border-primary rounded p-3">
-						<div class="text-left fs-4" id="username">iClown32</div>
-						<div class="text-sm-left fs-6" id="joindate">
-							Joined on 30th February 2099
-						</div>
-						<div class="text-sm-left fs-6" id="premium_status">
-							Premium User
-						</div>
+				<div>
+					<form class="settings100-form validate-form ">
+					<span class="settings100-form-title"> Change Your Nickname </span>
+
+					<div class="wrap-input100 validate-input">
+						<input
+							class="input100"
+							type="text"
+							name="nickname"
+							placeholder="iClown32"
+							id="nickname"
+						/>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
 					</div>
-					<div class="border border-secondary rounded text-center">
-						<table class="table table-stripped">
-							<thead class="thead-dark">
-								<h3>Carreer Stats</h3>
-							</thead>
-							<tbody>
-								<tr>
-									<th>Total Wins</th>
-									<th>Total losses</th>
-									<th>Total Played</th>
-								</tr>
-								<tr>
-									<td id="wins">336</td>
-									<td id="losses">337</td>
-									<td id="played">670</td>
-								</tr>
-							</tbody>
-						</table>
+
+					<div>	
+						<a href="#" class="btn btn-primary btn-lg active " role="button" aria-pressed="false">Change Nickname</a>
 					</div>
-					<div class="border border-info rounded text-center">
-						<table class="table table-stripped">
-							<thead class="thead-dark">
-								<h3>Rank Stats</h3>
-							</thead>
-							<tbody>
-								<tr>
-									<th>Rank</th>
-									<th>Elo</th>
-									<th>Winrate</th>
-								</tr>
-								<tr>
-									<td id="rank">S</td>
-									<td id="elo">2200</td>
-									<td id="winrate">66%</td>
-								</tr>
-							</tbody>
-						</table>
+
+
+					<div>	
+						<a href="password.html" class="btn btn-secondary btn-lg active " role="button" aria-pressed="false">Change Password</a>
+					</div>
+
+				</div>
+				
+
+					
+
 					</div>
 				</div>
 			</div>
