@@ -50,18 +50,24 @@
 		{
 			"id": 1,
 			"name": "Lobby1",
+			"host": "AguuSz",
+			"isFull": false,
 			"blueTeam": [1, 2],
 			"redTeam": [3, 4]
 		},
 		{
 			"id": 2,
 			"name": "Lobby2",
+			"host": "iClown",
+			"isFull": false,
 			"blueTeam": [5],
 			"redTeam": []
 		},
 		{
 			"id": 3,
 			"name": "Lobby3",
+			"host": "SharkyMid",
+			"isFull": false,
 			"blueTeam": [],
 			"redTeam": []
 		}
