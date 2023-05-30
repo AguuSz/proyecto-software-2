@@ -1,148 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Register</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-			crossorigin="anonymous"
-		/>
-		<!--===============================================================================================-->
-		<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-		<!--===============================================================================================-->
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="vendor/bootstrap/css/bootstrap.min.css"
-		/>
-		<!--===============================================================================================-->
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
-		/>
-		<!--===============================================================================================-->
-		<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-		<!--===============================================================================================-->
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="vendor/css-hamburgers/hamburgers.min.css"
-		/>
-		<!--===============================================================================================-->
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="vendor/select2/select2.min.css"
-		/>
-		<!--===============================================================================================-->
-		<link rel="stylesheet" type="text/css" href="css/util.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" />
-		<!--===============================================================================================-->
-	</head>
-	<body>
-		<div class="limiter">
-			<div class="container-login100">
-				<div class="wrap-login100">
-					<div class="login100-pic js-tilt" data-tilt>
-						<img src="images/img-01.png" alt="IMG" />
-					</div>
+  <head>
+    <title>Register</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <div class="login100-pic js-tilt" data-tilt>
+            <img src="images/img-01.png" alt="IMG" />
+          </div>
 
-					<form class="login100-form validate-form">
-						<span class="login100-form-title"> Create an account </span>
+          <form class="login100-form validate-form">
+            <span class="login100-form-title"> Create an account </span>
 
-						<div class="wrap-input100 validate-input">
-							<input
-								class="input100"
-								type="text"
-								name="nickname"
-								placeholder="Nickname"
-								id="nickname"
-							/>
-							<span class="focus-input100"></span>
-							<span class="symbol-input100">
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-							</span>
-						</div>
+            <div class="wrap-input100 validate-input">
+              <input
+                class="input100"
+                type="text"
+                name="nickname"
+                placeholder="Nickname"
+                id="nickname"
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
 
-						<div class="wrap-input100 validate-input">
-							<input
-								class="input100"
-								type="text"
-								name="email"
-								placeholder="Email"
-								id="email"
-							/>
-							<span class="focus-input100"></span>
-							<span class="symbol-input100">
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-							</span>
-						</div>
+            <div class="wrap-input100 validate-input">
+              <input
+                class="input100"
+                type="text"
+                name="email"
+                placeholder="Email"
+                id="email"
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
 
-						<div class="wrap-input100 validate-input">
-							<input
-								class="input100"
-								type="password"
-								name="pass"
-								placeholder="Password"
-								id="password1"
-								oninput="showPasswordIndicator(this.value.match(/^(?=.*[A-Z]).{8,}$/))"
-							/>
-							<span class="focus-input100"></span>
-							<span class="symbol-input100">
-								<i class="fa fa-lock" aria-hidden="true"></i>
-							</span>
-						</div>
-						<div id="password-indicator"></div>
-						<div class="wrap-input100 validate-input">
-							<input
-								class="input100"
-								type="password"
-								name="pass2"
-								placeholder="Repeat password"`
-								id="password2"
-							/>
-							<span class="focus-input100"></span>
-							<span class="symbol-input100">
-								<i class="fa fa-lock" aria-hidden="true"></i>
-							</span>
-						</div>
+            <div class="wrap-input100 validate-input">
+              <input
+                class="input100"
+                type="password"
+                name="pass"
+                placeholder="Password"
+                id="password1"
+                oninput="showPasswordIndicator(this.value.match(/^(?=.*[A-Z]).{8,}$/))"
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div id="password-indicator"></div>
+            <div class="wrap-input100 validate-input">
+              <input
+                class="input100"
+                type="password"
+                name="pass2"
+                placeholder="Repeat password"
+                `
+                id="password2"
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </span>
+            </div>
 
-						<div class="container-login100-form-btn">
-							<button class="login100-form-btn" onclick="validateForm()" id="register-button">Register</button>
-						</div>
+            <div class="container-login100-form-btn">
+              <button
+                class="login100-form-btn"
+                onclick="validateForm()"
+                id="register-button"
+              >
+                Register
+              </button>
+            </div>
 
-						<div class="text-center p-t-100">
-							<a class="txt2" href="../login/login.html">
-								Already have an account? Login
-								<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-							</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+            <div class="text-center p-t-100">
+              <a class="txt2" href="../login/login.html">
+                Already have an account? Login
+                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+              </a>
+            </div>
+          </form>
+        </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <!-- Toast que se muestra al registrar un usuario correctamente -->
+          <div
+            id="successToast"
+            class="toast align-items-center text-bg-success border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="d-flex">
+              <div class="toast-body">
+                Register has been realized successfuly.
+              </div>
+              <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
 
-		<!--===============================================================================================-->
-		<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-		<!--===============================================================================================-->
-		<script src="vendor/bootstrap/js/popper.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-		<!--===============================================================================================-->
-		<script src="vendor/select2/select2.min.js"></script>
-		<!--===============================================================================================-->
-		<script src="vendor/tilt/tilt.jquery.min.js"></script>
-		<script>
-			$(".js-tilt").tilt({
-				scale: 1.1,
-			});
-		</script>
-		<!--===============================================================================================-->
-		<script src="js/main.js"></script>
-		<!--===============================================================================================-->
-		<script src="script.js"></script>
-	</body>
+          <!-- Toast que se muestra cuando el campo de nickname no fue completado -->
+          <div
+            id="errorNicknameToast"
+            class="toast align-items-center text-bg-danger border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="d-flex">
+              <div class="toast-body">
+                The Nickname field must be completed.
+              </div>
+              <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+
+          <!-- Toast que se muestra al haber haberse ingresado un email invalido -->
+          <div
+            id="errorEmailToast"
+            class="toast align-items-center text-bg-danger border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="d-flex">
+              <div class="toast-body">
+                The Email is not a valid Email adress.
+              </div>
+              <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+
+          <!-- Toast que se muestra cuando las contraseñas no coinciden -->
+          <div
+            id="errorPasswordToast"
+            class="toast align-items-center text-bg-danger border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="d-flex">
+              <div class="toast-body">The passwords should match.</div>
+              <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+      $(".js-tilt").tilt({
+        scale: 1.1,
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <!--===============================================================================================-->
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
