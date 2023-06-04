@@ -49,6 +49,26 @@
       "region": "SAM",
       "rank": "Silver",
       "division": "3"
+    },
+    {
+      "nickname": "pray",
+      "email": "pray@gmail.com",
+      "password": "Pray12345",
+      "mmr": 1000,
+      "region": "SAM",
+      "rank": "Silver",
+      "division": "5",
+      "id": 6
+    },
+    {
+      "nickname": "darkerit",
+      "email": "darkerit@gmail.com",
+      "password": "1234567A",
+      "mmr": 1000,
+      "region": "SAM",
+      "rank": "Silver",
+      "division": "5",
+      "id": 7
     }
   ],
   "lobbies": [
