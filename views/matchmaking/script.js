@@ -248,6 +248,8 @@ function deleteLobby(lobbyId) {
 
 function deleteLobbyFromDOM(lobbyId) {
 	location.reload();
+
+	// TODO: Fixear que a la hora de borrar un 2do lobby, intente borrar tambien el primero pero este ya se ha eliminado, por lo que tira error.
 	let lobby = document.getElementById(lobbyId);
 	lobby.remove();
 }
