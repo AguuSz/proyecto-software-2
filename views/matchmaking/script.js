@@ -6,6 +6,20 @@ const toastSucess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
 const toastError = bootstrap.Toast.getOrCreateInstance(toastModalError);
 const myModal = new bootstrap.Modal(document.getElementById("newLobbyModal"));
 
+function onCloseButtonClick(lobbyId) {
+	let confirmationModal = new bootstrap.Modal(
+		document.getElementById("confirmDeleteLobbyModal")
+	);
+	confirmationModal.show();
+
+	let confirmDeleteLobbyBtn = document.getElementById("confirmDeleteLobbyBtn");
+	confirmDeleteLobbyBtn.addEventListener("click", () => {
+		deleteLobby(lobbyId);
+		confirmationModal.hide();
+	});
+	confirmDeleteLobbyBtn.removeEventListener("click", () => {});
+}
+
 if (toastTrigger) {
 	toastTrigger.addEventListener("click", () => {
 		event.preventDefault();
@@ -45,11 +59,9 @@ async function createLobby() {
 	};
 
 	try {
-		await storeLobby(newLobby);
-		// Para poder agregar el lobby es necesario que tenga informacion del usuario (para saber rank y division), pero esta info no esta presente en el lobby que se guarda en DB, por eso se setea
-		let tempLobby = newLobby;
-		tempLobby.user = user;
-		appendLobby(tempLobby);
+		let newLobbyStored = await storeLobby(newLobby);
+		newLobbyStored.user = user;
+		appendLobby(newLobbyStored);
 	} catch (error) {
 		console.log(error);
 	}
@@ -63,17 +75,22 @@ function appendLobby(lobby) {
 
 	// Crear el elemento div con la clase "col-2"
 	const divCol2 = document.createElement("div");
+	divCol2.id = lobby.id;
 	divCol2.classList.add("col-2");
 
 	// Crear el elemento div con la clase "card text-center px-0"
 	const divCard = document.createElement("div");
 	divCard.classList.add("card", "text-center", "px-0");
 
-	// Crear el elemento div con la clase "card-header" y texto "AguuSz's lobby"
+	// Crear el elemento div con la clase "card-header" y texto "nickname's lobby"
 	const divCardHeader = document.createElement("div");
 	divCardHeader.classList.add("card-header", "pe-1");
 	divCardHeader.textContent = user.nickname + "'s lobby";
+
 	const closeButton = document.createElement("button");
+	closeButton.addEventListener("click", () => {
+		onCloseButtonClick(lobby.id);
+	});
 	closeButton.setAttribute("type", "button");
 	closeButton.classList.add("btn-close", "float-end", "show-if-admin");
 	divCardHeader.appendChild(closeButton);
@@ -164,19 +181,6 @@ window.onload = () => {
 	getLobbies();
 };
 
-function getLobbies() {
-	fetch(`http://localhost:3000/lobbies?_expand=user`)
-		.then((response) => response.json())
-		.then((responseLobbies) => {
-			responseLobbies.forEach((lobby) => {
-				appendLobby(lobby);
-			});
-		})
-		.catch((error) => {
-			console.log("Error while trying to fetch data:", error);
-		});
-}
-
 function getUserById(id) {
 	return fetch(`http://localhost:3000/users/${id}`)
 		.then((response) => response.json())
@@ -186,6 +190,19 @@ function getUserById(id) {
 			} else {
 				return null;
 			}
+		})
+		.catch((error) => {
+			console.log("Error while trying to fetch data:", error);
+		});
+}
+
+function getLobbies() {
+	fetch(`http://localhost:3000/lobbies?_expand=user`)
+		.then((response) => response.json())
+		.then((responseLobbies) => {
+			responseLobbies.forEach((lobby) => {
+				appendLobby(lobby);
+			});
 		})
 		.catch((error) => {
 			console.log("Error while trying to fetch data:", error);
@@ -209,6 +226,32 @@ function storeLobby(lobby) {
 		.catch((error) => {
 			console.error("Error:", error);
 		});
+}
+
+function deleteLobby(lobbyId) {
+	const url = `http://localhost:3000/lobbies/${lobbyId}`;
+
+	return fetch(url, {
+		method: "DELETE",
+	})
+		.then((response) => response.json())
+		.then((result) => {
+			return result;
+		})
+		.then(() => {
+			deleteLobbyFromDOM(lobbyId);
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+}
+
+function deleteLobbyFromDOM(lobbyId) {
+	location.reload();
+
+	// TODO: Fixear que a la hora de borrar un 2do lobby, intente borrar tambien el primero pero este ya se ha eliminado, por lo que tira error.
+	let lobby = document.getElementById(lobbyId);
+	lobby.remove();
 }
 
 function storeInCookies(key, value) {
