@@ -6,6 +6,10 @@ const toastSucess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
 const toastError = bootstrap.Toast.getOrCreateInstance(toastModalError);
 const myModal = new bootstrap.Modal(document.getElementById("newLobbyModal"));
 
+function onCloseButtonClick(lobbyId) {
+	console.log("Se ha clickeado " + lobbyId);
+}
+
 if (toastTrigger) {
 	toastTrigger.addEventListener("click", () => {
 		event.preventDefault();
@@ -69,11 +73,15 @@ function appendLobby(lobby) {
 	const divCard = document.createElement("div");
 	divCard.classList.add("card", "text-center", "px-0");
 
-	// Crear el elemento div con la clase "card-header" y texto "AguuSz's lobby"
+	// Crear el elemento div con la clase "card-header" y texto "nickname's lobby"
 	const divCardHeader = document.createElement("div");
 	divCardHeader.classList.add("card-header", "pe-1");
 	divCardHeader.textContent = user.nickname + "'s lobby";
+
 	const closeButton = document.createElement("button");
+	closeButton.addEventListener("click", () => {
+		onCloseButtonClick(lobby.id);
+	});
 	closeButton.setAttribute("type", "button");
 	closeButton.classList.add("btn-close", "float-end", "show-if-admin");
 	divCardHeader.appendChild(closeButton);

@@ -74,7 +74,7 @@
 	"lobbies": [
 		{
 			"id": 1,
-			"hostId": 1,
+			"userId": 1,
 			"platform": "PC",
 			"region": "SAM",
 			"isFull": false,
@@ -83,7 +83,7 @@
 		},
 		{
 			"id": 2,
-			"hostId": 3,
+			"userId": 3,
 			"platform": "PS4",
 			"region": "SAM",
 			"isFull": false,
@@ -92,8 +92,17 @@
 		},
 		{
 			"id": 3,
-			"hostId": 2,
+			"userId": 2,
 			"platform": "XBOX",
+			"region": "NA",
+			"isFull": false,
+			"blueTeam": [],
+			"redTeam": []
+		},
+		{
+			"id": 4,
+			"userId": 1,
+			"platform": "PS4",
 			"region": "NA",
 			"isFull": false,
 			"blueTeam": [],
