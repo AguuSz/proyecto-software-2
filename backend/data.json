@@ -1,103 +1,137 @@
 {
-	"users": [
-		{
-			"id": 1,
-			"nickname": "AguuSz",
-			"email": "AguuSz@gmail.com",
-			"password": "password1",
-			"mmr": 2000,
-			"region": "SAM",
-			"rank": "Grand Champion",
-			"division": "1"
-		},
-		{
-			"id": 2,
-			"nickname": "Charky",
-			"email": "Charky@gmail.com",
-			"password": "password2",
-			"mmr": 1500,
-			"region": "SAM",
-			"rank": "Platinum",
-			"division": "2"
-		},
-		{
-			"id": 3,
-			"nickname": "iClown",
-			"email": "iClown@gmail.com",
-			"password": "password3",
-			"mmr": 2400,
-			"region": "SAM",
-			"rank": "Supersonic legend",
-			"division": "1"
-		},
-		{
-			"id": 4,
-			"nickname": "carl17",
-			"email": "carl17@gmail.com",
-			"password": "password5",
-			"mmr": 1200,
-			"region": "SAM",
-			"rank": "Silver",
-			"division": "3"
-		},
-		{
-			"id": 5,
-			"nickname": "Jackz",
-			"email": "Jackz@gmail.com",
-			"password": "password5",
-			"mmr": 1300,
-			"region": "SAM",
-			"rank": "Silver",
-			"division": "3"
-		},
-		{
-			"nickname": "pray",
-			"email": "pray@gmail.com",
-			"password": "Pray12345",
-			"mmr": 1000,
-			"region": "SAM",
-			"rank": "Silver",
-			"division": "5",
-			"id": 6
-		},
-		{
-			"nickname": "darkerit",
-			"email": "darkerit@gmail.com",
-			"password": "1234567A",
-			"mmr": 1000,
-			"region": "SAM",
-			"rank": "Silver",
-			"division": "5",
-			"id": 7
-		}
-	],
-	"lobbies": [
-		{
-			"id": 1,
-			"hostId": 1,
-			"platform": "PC",
-			"region": "SAM",
-			"isFull": false,
-			"blueTeam": [1, 2],
-			"redTeam": [3, 4]
-		},
-		{
-			"id": 2,
-			"hostId": 3,
-			"platform": "PS4",
-			"region": "SAM",
-			"isFull": false,
-			"blueTeam": [5],
-			"redTeam": []
-		},
-		{
-			"id": 3,
-			"hostId": 2,
-			"platform": "XBOX",
-			"region": "NA",
-			"isFull": false,
-			"blueTeam": [],
-			"redTeam": []
-		}
-	]
+  "users": [
+    {
+      "id": 1,
+      "nickname": "AguuSz",
+      "email": "AguuSz@gmail.com",
+      "password": "password1",
+      "mmr": 2000,
+      "region": "SAM",
+      "rank": "Grand Champion",
+      "division": "1",
+      "wins": "3",
+      "loses": "1"
+    },
+    {
+      "id": 2,
+      "nickname": "Charky",
+      "email": "Charky@gmail.com",
+      "password": "password2",
+      "mmr": 1500,
+      "region": "SAM",
+      "rank": "Platinum",
+      "division": "2",
+      "wins": "2",
+      "loses": "2"
+    },
+    {
+      "id": 3,
+      "nickname": "iClown",
+      "email": "iClown@gmail.com",
+      "password": "password3",
+      "mmr": 2400,
+      "region": "SAM",
+      "rank": "Supersonic legend",
+      "division": "1",
+      "wins": "1",
+      "loses": "2"
+    },
+    {
+      "id": 4,
+      "nickname": "carl17",
+      "email": "carl17@gmail.com",
+      "password": "password5",
+      "mmr": 1200,
+      "region": "SAM",
+      "rank": "Silver",
+      "division": "3",
+      "wins": "0",
+      "loses": "1"
+    },
+    {
+      "id": 5,
+      "nickname": "Jackz",
+      "email": "Jackz@gmail.com",
+      "password": "password5",
+      "mmr": 1300,
+      "region": "SAM",
+      "rank": "Silver",
+      "division": "3",
+      "wins": "1",
+      "loses": "3"
+    },
+    {
+      "nickname": "pray",
+      "email": "pray@gmail.com",
+      "password": "Pray12345",
+      "mmr": 1000,
+      "region": "SAM",
+      "rank": "Silver",
+      "division": "5",
+      "id": 6,
+      "wins": "5",
+      "loses": "2"
+    },
+    {
+      "nickname": "darkerit",
+      "email": "darkerit@gmail.com",
+      "password": "1234567A",
+      "mmr": 1000,
+      "region": "SAM",
+      "rank": "Silver",
+      "division": "5",
+      "id": 7,
+      "wins": "2",
+      "loses": "1"
+    },
+    {
+      "nickname": "Test3",
+      "email": "asanguesa030@alumnos.iua.edu,ar",
+      "password": "Test1234",
+      "mmr": 1000,
+      "region": "SAM",
+      "rank": "Silver",
+      "division": "5",
+      "wins": "0",
+      "loses": "0",
+      "id": 8
+    }
+  ],
+  "lobbies": [
+    {
+      "id": 1,
+      "hostId": 1,
+      "platform": "PC",
+      "region": "SAM",
+      "isFull": false,
+      "blueTeam": [
+        1,
+        2
+      ],
+      "redTeam": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": 2,
+      "hostId": 3,
+      "platform": "PS4",
+      "region": "SAM",
+      "isFull": false,
+      "blueTeam": [
+        5
+      ],
+      "redTeam": []
+    },
+    {
+      "id": 3,
+      "hostId": 2,
+      "platform": "XBOX",
+      "region": "NA",
+      "isFull": false,
+      "blueTeam": [],
+      "redTeam": []
+    }
+  ]
 }
