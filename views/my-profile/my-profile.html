@@ -13,47 +13,16 @@
 		<script src="./script.js"></script>
 	</head>
 	<body>
-		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="../index/index.html">
-					<img
-						src="https://cdn.discordapp.com/attachments/688516952289050636/1090743461403185182/image.png"
-						alt="Logo"
-						width="128"
-						height="76"
-						class="d-inline-block align-text-top"
-					/>
-				</a>
-				<div
-					class="collapse navbar-collapse justify-content-end"
-					id="navbarNav"
-				>
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="../matchmaking/matchmaking.html"
-								>Matchmaking</a
-							>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="../leaderboard/leaderboard.html"
-								>Leaderboard</a
-							>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" disabled 
-								>Profile</a
-							>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		<iframe
+			class="w-100"
+			src="../../components/nav_bar.html"
+			title="navBar"
+		></iframe>
 		<h1 class="text-center mt-2">Profile</h1>
 		<div class="container">
 			<div class="row">
 				<div
-					class="col-2 d-grid gap-3 bg-secondary-subtle rounded  pt-3 pb-4 mx-auto text-center"
+					class="col-2 d-grid gap-3 bg-secondary-subtle rounded pt-3 pb-4 mx-auto text-center"
 				>
 					<img
 						src="images/profile_pic_icon.png"
@@ -62,14 +31,32 @@
 						width="150px"
 					/>
 
-					<button class="btn btn-primary w-100" onclick="switchTab(0)" role="button">Home</button>
-					<button class="btn btn-secondary   w-100" onclick="switchTab(1)" role="button">Titles</button>
-					<button class="btn btn-secondary w-100" onclick="switchTab(2)" role="button">Settings</button>
-					
+					<button
+						class="btn btn-primary w-100"
+						onclick="switchTab(0)"
+						role="button"
+					>
+						Home
+					</button>
+					<button
+						class="btn btn-secondary w-100"
+						onclick="switchTab(1)"
+						role="button"
+					>
+						Titles
+					</button>
+					<button
+						class="btn btn-secondary w-100"
+						onclick="switchTab(2)"
+						role="button"
+					>
+						Settings
+					</button>
 				</div>
 
 				<div
-					class="col-9 rounded bg-secondary-subtle pt-3 pb-4" style="height: 474px"
+					class="col-9 rounded bg-secondary-subtle pt-3 pb-4"
+					style="height: 474px"
 				>
 					<div class="border border-primary rounded p-3" id="quick_prof">
 						<div class="text-left fs-4" id="username">iClown32</div>
@@ -80,9 +67,8 @@
 							Premium User
 						</div>
 					</div>
-					<div class="border border-primary rounded p-3" id="tab">a</div>	
+					<div class="border border-primary rounded p-3" id="tab">a</div>
 				</div>
-				
 			</div>
 		</div>
 	</body>
