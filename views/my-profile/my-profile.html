@@ -10,6 +10,7 @@
 			crossorigin="anonymous"
 		/>
 		<title>My profile</title>
+		<script src="./script.js"></script>
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -30,10 +31,7 @@
 				>
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a
-								class="nav-link active"
-								aria-current="page"
-								href="../matchmaking/matchmaking.html"
+							<a class="nav-link" href="../matchmaking/matchmaking.html"
 								>Matchmaking</a
 							>
 						</li>
@@ -43,7 +41,9 @@
 							>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" disabled>Profile</a>
+							<a class="nav-link active" aria-current="page" disabled 
+								>Profile</a
+							>
 						</li>
 					</ul>
 				</div>
@@ -53,30 +53,25 @@
 		<div class="container">
 			<div class="row">
 				<div
-					class="col-2 border border-secondary rounded bg-secondary-subtle pt-3 pb-4 mx-auto text-center"
+					class="col-2 d-grid gap-3 bg-secondary-subtle rounded  pt-3 pb-4 mx-auto text-center"
 				>
 					<img
 						src="images/profile_pic_icon.png"
 						alt="profile_pic_icon"
-						class="rounded pb-2"
+						class="rounded pb-2 mx-auto"
 						width="150px"
 					/>
-					<div>
-						<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Home</a>
-					</div>
-					<div>
-						<a href="titles.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="false">Titles</a>
-					</div>
-					<div>	
-						<a href="settings.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="false">Settings</a>
-					</div>
+
+					<button class="btn btn-primary w-100" onclick="switchTab(0)" role="button">Home</button>
+					<button class="btn btn-secondary   w-100" onclick="switchTab(1)" role="button">Titles</button>
+					<button class="btn btn-secondary w-100" onclick="switchTab(2)" role="button">Settings</button>
 					
 				</div>
 
 				<div
-					class="col-9 border border-secondary rounded bg-secondary-subtle pt-3 pb-4 m-10"
+					class="col-9 rounded bg-secondary-subtle pt-3 pb-4" style="height: 474px"
 				>
-					<div class="border border-primary rounded p-3">
+					<div class="border border-primary rounded p-3" id="quick_prof">
 						<div class="text-left fs-4" id="username">iClown32</div>
 						<div class="text-sm-left fs-6" id="joindate">
 							Joined on 30th February 2099
@@ -85,45 +80,9 @@
 							Premium User
 						</div>
 					</div>
-					<div class="border border-secondary rounded text-center">
-						<table class="table table-stripped">
-							<thead class="thead-dark">
-								<h3>Carreer Stats</h3>
-							</thead>
-							<tbody>
-								<tr>
-									<th>Total Wins</th>
-									<th>Total losses</th>
-									<th>Total Played</th>
-								</tr>
-								<tr>
-									<td id="wins">336</td>
-									<td id="losses">337</td>
-									<td id="played">670</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="border border-info rounded text-center">
-						<table class="table table-stripped">
-							<thead class="thead-dark">
-								<h3>Rank Stats</h3>
-							</thead>
-							<tbody>
-								<tr>
-									<th>Rank</th>
-									<th>Elo</th>
-									<th>Winrate</th>
-								</tr>
-								<tr>
-									<td id="rank">S</td>
-									<td id="elo">2200</td>
-									<td id="winrate">66%</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<div class="border border-primary rounded p-3" id="tab">a</div>	
 				</div>
+				
 			</div>
 		</div>
 	</body>
