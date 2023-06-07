@@ -239,6 +239,14 @@ function getQuickProfile() {
 	}
 }
 
+function logOut() {
+	localStorage.removeItem("userId");
+	localStorage.removeItem("userEmail");
+	localStorage.removeItem("userName");
+	localStorage.removeItem("isAdmin");
+	window.location.href = "../index/index.html";
+}
+
 function createSettingsButton() {
 	const profile_menu = document.getElementById("profile-menu");
 	const settings_btn = document.createElement("button");
