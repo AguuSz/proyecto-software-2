@@ -140,9 +140,11 @@ function appendLobby(lobby) {
 
 	// Crear el botón "Join lobby!" con la clase "btn btn-primary mt-3" y el elemento a con el atributo href
 	const aJoinLobby = document.createElement("a");
-	aJoinLobby.href = "#";
 	aJoinLobby.classList.add("btn", "btn-primary", "mt-3");
 	aJoinLobby.textContent = "Join lobby!";
+	aJoinLobby.addEventListener("click", () => {
+		onJoinLobbyClick(lobby.id);
+	});
 
 	// Crear el elemento div con la clase "row mx-auto" y agregar el botón "Join lobby!"
 	const divRow = document.createElement("div");
@@ -252,6 +254,12 @@ function deleteLobbyFromDOM(lobbyId) {
 	// TODO: Fixear que a la hora de borrar un 2do lobby, intente borrar tambien el primero pero este ya se ha eliminado, por lo que tira error.
 	let lobby = document.getElementById(lobbyId);
 	lobby.remove();
+}
+
+function onJoinLobbyClick(lobbyId) {
+	let joinLobbyToast = document.getElementById("joinLobbyToast");
+	let toast = new bootstrap.Toast(joinLobbyToast);
+	toast.show();
 }
 
 function storeInCookies(key, value) {
