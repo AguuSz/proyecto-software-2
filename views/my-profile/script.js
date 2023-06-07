@@ -1,70 +1,62 @@
 var userId;
 
 var user;
-var user_wr; 
+var user_wr;
 
 window.onload = async () => {
-    
-    localStorage.setItem(userId, 2) //Eliminar para el test
-    localStorage.setItem("userEmail", "Charky@gmail.com")
-    current_user = getFromCookies(userId)
-    const params = new URLSearchParams(window.location.search)
-    if(params.get('userId')){
-        userId = params.get('userId')
-    } else{
-        userId = current_user;
-    }
-    
-    user = await getUserById(userId)
-    
-    if( current_user == userId){
-        createSettingsButton();
-    } 
-    
-    switchTab(0)
-    
-    user_wr = getUserWR();
-    
-}
-    
+	current_user = getFromCookies("userId");
+	const params = new URLSearchParams(window.location.search);
+	if (params.get("userId")) {
+		userId = params.get("userId");
+	} else {
+		userId = current_user;
+	}
 
+	user = await getUserById(userId);
 
-function switchTab(index){
+	if (current_user == userId) {
+		createSettingsButton();
+	}
 
-    const buttons = document.querySelectorAll('.col-2 .btn')
-       buttons.forEach((button, i) => {
-        if (i === index) {
-            button.classList.remove('btn-secondary');
-            button.classList.add('btn-primary')
-        } else {
-            button.classList.remove('btn-primary');
-            button.classList.add('btn-secondary')
-        
-        }
-    }); 
+	switchTab(0);
 
-    const tab = document.getElementById('tab')
-    
+	user_wr = getUserWR();
+};
 
+function switchTab(index) {
+	const buttons = document.querySelectorAll(".col-2 .btn");
+	buttons.forEach((button, i) => {
+		if (i === index) {
+			button.classList.remove("btn-secondary");
+			button.classList.add("btn-primary");
+		} else {
+			button.classList.remove("btn-primary");
+			button.classList.add("btn-secondary");
+		}
+	});
 
+	const tab = document.getElementById("tab");
 
-    switch(index){
-        case 0: 
-        getQuickProfile()
-        tab.innerHTML = `
-            <div> Region: ` 
-            + user.region
-            +`
+	switch (index) {
+		case 0:
+			getQuickProfile();
+			tab.innerHTML =
+				`
+            <div> Region: ` +
+				user.region +
+				`
             </div>
-            <div>Rank: `
-             + user.rank + `
+            <div>Rank: ` +
+				user.rank +
+				`
             </div>
-            `
-        break;
+            `;
+			break;
 
-        case 1: 
-        getQuickProfile()
-        tab.innerHTML = `
+		case 1:
+			getQuickProfile();
+			tab.innerHTML =
+				`
         <div>
             <table class="table table-stripped">
                 <thead class="thead-dark">
@@ -77,14 +69,20 @@ function switchTab(index){
                         <th>Total Played</th>
                     </tr>
                     <tr>
-                        <td id="wins">`+ user.wins + `</td>
-                        <td id="losses">`+ user.loses + `</td>
-                        <td id="played">`+ (parseInt(user.wins) + parseInt(user.loses)) + `</td>
+                        <td id="wins">` +
+				user.wins +
+				`</td>
+                        <td id="losses">` +
+				user.loses +
+				`</td>
+                        <td id="played">` +
+				(parseInt(user.wins) + parseInt(user.loses)) +
+				`</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="border border-info rounded text-center">
+        <div class="rounded text-center">
             <table class="table table-stripped">
                 <thead class="thead-dark">
                     <h3>Rank Stats</h3>
@@ -96,127 +94,100 @@ function switchTab(index){
                         <th>Winrate</th>
                     </tr>
                     <tr>
-                        <td id="rank">`+ user.rank + `</td>
-                        <td id="elo">`+ user.mmr + `</td>
-                        <td id="winrate">`+ user_wr + `%</td>
+                        <td id="rank">` +
+				user.rank +
+				`</td>
+                        <td id="elo">` +
+				user.mmr +
+				`</td>
+                        <td id="winrate">` +
+				user_wr +
+				`%</td>
                     </tr>
                 </tbody>
             </table>
-        `
-        break;
-        case 2: 
-            try{
-                document.getElementById("quick_prof").remove()
-            }  
-            catch{
-                console.log("No existe el quick profile")
-            }
+        `;
+			break;
+		case 2:
+			try {
+				document.getElementById("quick_prof").remove();
+			} catch {
+				console.log("No existe el quick profile");
+			}
 
-            tab.innerHTML = `
+			tab.innerHTML =
+				`
             <h3>
 					Edit Your Profile
 			</h3>
-            <div class="position-relative">
+            <div class=">
                 <form id="editProfileForm">
 					<form class="settings100-form validate-form ">
+						<div>
+							<div class="mb-3">
+								<label for="nickname" class="form-label">Change your nickname</label>
+								<input type="text" class="form-control" id="nickname" placeholder="` +
+				user.nickname +
+				`">
+							</div>
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="mb-3">
+							<label for="email" class="form-label">Email address</label>
+							<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="` +
+				user.email +
+				`">
+							<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+						</div>
+
                     <div>
-                        <span class="settings100-form-title"> Change Your Nickname </span>
-
-					<span class="wrap-input100 validate-input">
-						<input
-					
-							type="text"
-							name="nickname"
-							placeholder="`+ user.nickname +`"
-							id="nickname"
-						/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</span>
-
-                    </div>
-                    <div>
-                    <span class="settings100-form-title"> Change Your Email </span>
-
-                <span class="wrap-input100 validate-input">
-                    <input
-                
-                        type="text"
-                        name="nickname"
-                        placeholder="`+ user.email +`"
-                        id="email"
-                    />
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                </span>
 
                 <h3>
 					Change your password
 				</h3>
-                <div>
-                </span>
-                <span class="wrap-input100 validate-input">
-                    <input
-                
-                        type="password"
-                        placeholder="New Password"
-                        id="new_password"
-                        oninput="showPasswordIndicator(this.value.match(/^(?=.*[A-Z]).{8,}$/))"
-                    />
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                </span>
-                
-                
-                <span class="wrap-input100 validate-input">
-                    <input
-                
-                        type="password"
-                        placeholder="Current Password"
-                        id="old_password"
-                    />
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                
-                </div>
-                <div id="password-indicator"></div>
-                
-				<span class="wrap-input100 validate-input">
-                    <input
-                
-                        type="password"
-                    
-                        placeholder="Repeat new password"
-                        id="new_password2"
-                    />
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                </span>
 
-				<button type="button" class="btn btn-success position-absolute bottom-0 end-0" onClick="editProfile()">
-                    Save
-                </button>
+				<div class="row">
+					<div class="col-4">
+						<div class="mb-3">
+						<label for="new_password" class="form-label">New password</label>
+						<input type="password" class="form-control" id="new_password" oninput="showPasswordIndicator(this.value.match(/^(?=.*[A-Z]).{8,}$/))">
+						</div>
+					</div>
+
+					<div class="col-4">
+						<div class="mb-3">
+						<label for="new_password" class="form-label">Current password</label>
+						<input type="password" class="form-control" id="new_password">
+						</div>
+					</div>
+
+					<div class="col-4">
+						<div class="mb-3">
+						<label for="new_password" class="form-label">Repeat current password</label>
+						<input type="password" class="form-control" id="new_password2">
+						</div>
+					</div>
+				</div>
+
+				<div class="d-flex justify-content-end">
+					<button type="button" class="btn btn-success" onClick="editProfile()">
+						Save
+					</button>
+				</div>
+				
                 </form>
 		    </div>
-            `
-            break;
-
-    }
-
+            `;
+			break;
+	}
 }
 
-function getFromCookies(key){
-    return localStorage.getItem(key)
+function getFromCookies(key) {
+	return localStorage.getItem(key);
 }
 
 function getUserById(id) {
@@ -234,252 +205,249 @@ function getUserById(id) {
 		});
 }
 
-function getUserWR(){
-    wins = parseInt(user.wins)
-    loses = parseInt(user.loses)
-    return (wins / (wins+loses) *100)
+function getUserWR() {
+	wins = parseInt(user.wins);
+	loses = parseInt(user.loses);
+	return (wins / (wins + loses)) * 100;
 }
 
-function getQuickProfile(){
-    if(!document.getElementById("quick_prof")){
-    const container = document.getElementById("profile-container")
-    const quick_prof = document.createElement("div")
-    quick_prof.setAttribute('id','quick_prof' )
-    quick_prof.classList.add("border", "border-primary", "rounded", "p3")
-    const username = document.createElement("div")
-    username.classList.add("text-left", "fs-4")
-    username.textContent = user.nickname
-    const joindate = document.createElement("div")
-    joindate.classList.add("text-sm-left", "fs-6")
-    joindate.textContent = "Joined on 30th February 2009"
-    const premium_status = document.createElement("div")
-    premium_status.classList.add("text-sm-left", "fs-6")
-    premium_status.textContent = "Premium User"
-    quick_prof.appendChild(username)
-    quick_prof.appendChild(joindate)
-    quick_prof.appendChild(premium_status)
-    container.prepend(quick_prof)
-    }
-    
-}
-    
-    
-    
-
-
-function createSettingsButton(){
-    const profile_menu = document.getElementById("profile-menu")
-    const settings_btn = document.createElement("button")
-    settings_btn.classList.add("btn", "btn-secondary", "w-100")
-    settings_btn.textContent = "Settings"
-    settings_btn.addEventListener("click", () => switchTab(2))
-    profile_menu.appendChild(settings_btn)
-    
+function getQuickProfile() {
+	if (!document.getElementById("quick_prof")) {
+		const container = document.getElementById("profile-container");
+		const quick_prof = document.createElement("div");
+		quick_prof.setAttribute("id", "quick_prof");
+		quick_prof.classList.add(
+			"shadow",
+			"p-3",
+			"mb-3",
+			"bg-body-tertiary",
+			"rounded"
+		);
+		const username = document.createElement("div");
+		username.classList.add("text-left", "fs-4");
+		username.textContent = user.nickname;
+		const joindate = document.createElement("div");
+		joindate.classList.add("text-sm-left", "fs-6");
+		joindate.textContent = "Joined on 30th February 2009";
+		const premium_status = document.createElement("div");
+		premium_status.classList.add("text-sm-left", "fs-6");
+		premium_status.textContent = "Premium User";
+		quick_prof.appendChild(username);
+		quick_prof.appendChild(joindate);
+		quick_prof.appendChild(premium_status);
+		container.prepend(quick_prof);
+	}
 }
 
-async function editProfile(){
-    let tempUser = {...user
-    };
-    var changesMade = false;
+function createSettingsButton() {
+	const profile_menu = document.getElementById("profile-menu");
+	const settings_btn = document.createElement("button");
+	settings_btn.classList.add("btn", "btn-secondary", "w-100");
+	settings_btn.textContent = "Settings";
+	settings_btn.addEventListener("click", () => switchTab(2));
+	profile_menu.appendChild(settings_btn);
+}
 
-    newNickname = document.getElementById("nickname").value
-    newEmail = document.getElementById("email").value
-    oldPassword = document.getElementById("old_password").value
-    newPassword = document.getElementById("new_password").value
-    newPassword2 = document.getElementById("new_password2").value
+async function editProfile() {
+	let tempUser = { ...user };
+	var changesMade = false;
 
+	newNickname = document.getElementById("nickname").value;
+	newEmail = document.getElementById("email").value;
+	oldPassword = document.getElementById("old_password").value;
+	newPassword = document.getElementById("new_password").value;
+	newPassword2 = document.getElementById("new_password2").value;
 
-    if(Boolean(newNickname)){
-        if(await validateDuplicatedNickname(newNickname)){
-            const toastModalNicknameDuplicatedError = document.getElementById("errorNicknameDuplicatedToast");
-            const toastNicknameDuplicatedError = bootstrap.Toast.getOrCreateInstance(toastModalNicknameDuplicatedError);
-            toastNicknameDuplicatedError.show();
-        } else {
-            tempUser.nickname = newNickname
-            console.log("New Nickname")
-            changesMade = true;
-        }
-    }
-    if(Boolean(newEmail)){
-        
-        switch(await validateEmail(newEmail)){
-        case 0: 
-            tempUser.email = newEmail;
-            changesMade = true;
-            break;
-        
-        case 1:
-            const toastModalDuplicatedEmailError = document.getElementById("errorEmailDuplicatedToast");
-            const toastDuplicatedEmailError = bootstrap.Toast.getOrCreateInstance(toastModalDuplicatedEmailError);
-            toastDuplicatedEmailError.show();
-        break;
-        case 2: 
-            const toastModalEmailError = document.getElementById("errorEmailToast");
-            const toastEmailError = bootstrap.Toast.getOrCreateInstance(toastModalEmailError);
-            toastEmailError.show();
-            break;
+	if (Boolean(newNickname)) {
+		if (await validateDuplicatedNickname(newNickname)) {
+			const toastModalNicknameDuplicatedError = document.getElementById(
+				"errorNicknameDuplicatedToast"
+			);
+			const toastNicknameDuplicatedError = bootstrap.Toast.getOrCreateInstance(
+				toastModalNicknameDuplicatedError
+			);
+			toastNicknameDuplicatedError.show();
+		} else {
+			tempUser.nickname = newNickname;
+			console.log("New Nickname");
+			changesMade = true;
+		}
+	}
+	if (Boolean(newEmail)) {
+		switch (await validateEmail(newEmail)) {
+			case 0:
+				tempUser.email = newEmail;
+				changesMade = true;
+				break;
 
-        case 3:
-            console.log("Unhandled error")
-        } 
-    }
-    
-    if(Boolean(newPassword) && Boolean(oldPassword)){
-        console.log(newPassword)
-        console.log(newPassword2)
-        if(!validatePassword(newPassword, newPassword2)){
-            console.log("GOD")
-            const toastModalPasswordError = document.getElementById("errorPasswordToast");
-            const toastPasswordError = bootstrap.Toast.getOrCreateInstance(toastModalPasswordError);
-            toastPasswordError.show();
-        } else {
-            if(await checkPassword(oldPassword)){
-                
-                tempUser.password = newPassword;
-                changesMade = true;
-            }
-                
-        }
-    }
-    
-    if(changesMade){
-        console.log(tempUser)
-        storeChanges(tempUser)
-        const toastModalSuccess = document.getElementById("successToast");
-        const toastSuccess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
-        toastSuccess.show();
-    } else{
-        const toastModalNoChangesMade = document.getElementById("NoChangesMade");
-        const toastNoChangesMade = bootstrap.Toast.getOrCreateInstance(toastModalNoChangesMade);
-        toastNoChangesMade.show();
-    }
-    
-        
-    
+			case 1:
+				const toastModalDuplicatedEmailError = document.getElementById(
+					"errorEmailDuplicatedToast"
+				);
+				const toastDuplicatedEmailError = bootstrap.Toast.getOrCreateInstance(
+					toastModalDuplicatedEmailError
+				);
+				toastDuplicatedEmailError.show();
+				break;
+			case 2:
+				const toastModalEmailError = document.getElementById("errorEmailToast");
+				const toastEmailError =
+					bootstrap.Toast.getOrCreateInstance(toastModalEmailError);
+				toastEmailError.show();
+				break;
 
-    
+			case 3:
+				console.log("Unhandled error");
+		}
+	}
+
+	if (Boolean(newPassword) && Boolean(oldPassword)) {
+		console.log(newPassword);
+		console.log(newPassword2);
+		if (!validatePassword(newPassword, newPassword2)) {
+			console.log("GOD");
+			const toastModalPasswordError =
+				document.getElementById("errorPasswordToast");
+			const toastPasswordError = bootstrap.Toast.getOrCreateInstance(
+				toastModalPasswordError
+			);
+			toastPasswordError.show();
+		} else {
+			if (await checkPassword(oldPassword)) {
+				tempUser.password = newPassword;
+				changesMade = true;
+			}
+		}
+	}
+
+	if (changesMade) {
+		console.log(tempUser);
+		storeChanges(tempUser);
+		const toastModalSuccess = document.getElementById("successToast");
+		const toastSuccess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
+		toastSuccess.show();
+	} else {
+		const toastModalNoChangesMade = document.getElementById("NoChangesMade");
+		const toastNoChangesMade = bootstrap.Toast.getOrCreateInstance(
+			toastModalNoChangesMade
+		);
+		toastNoChangesMade.show();
+	}
 }
 
 async function validateDuplicatedNickname(newNickname) {
-  const nickname = newNickname;
+	const nickname = newNickname;
 
-  
-  return fetch('http://localhost:3000/users')
-    .then(response => response.json())
-    .then(users => {
-      
-      const foundUser = users.find(user => user.nickname === nickname);
-      if (foundUser) {
-        return true; // El nickname ya existe
-      } else {
-        return false; // El nickname no existe
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      return true; 
-    });
+	return fetch("http://localhost:3000/users")
+		.then((response) => response.json())
+		.then((users) => {
+			const foundUser = users.find((user) => user.nickname === nickname);
+			if (foundUser) {
+				return true; // El nickname ya existe
+			} else {
+				return false; // El nickname no existe
+			}
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+			return true;
+		});
 }
 
+async function validateEmail(newEmail) {
+	var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-async function validateEmail(newEmail){
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    if(emailRegex.test(newEmail)){
-        return fetch('http://localhost:3000/users')
-            .then(response => response.json())
-            .then(users => {
-      
-        const foundUser = users.find(user => user.email === newEmail);
-        if (foundUser) {
-        
-        return 1; // El email ya existe
-        } else {
-        
-        return 0; // El email no existe
-        }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      return 3; 
-    });
-    } else{
-        
-        return 2 
-    }
-   
-  }
-
-async function checkPassword(old_password){
-    
-    return fetch('http://localhost:3000/users')
-    .then(response => response.json())
-    .then(users => {
-    const user1 = users.find(u => u.email === getFromCookies("userEmail"));
-	  
-	    const toastModalError = document.getElementById("errorToast");
-  	    const toastError = bootstrap.Toast.getOrCreateInstance(toastModalError);
-        console.log(user1)
-        if (user1 && user1.password === old_password) {
-            console.log('Password changed succesfully');
-            return true;
-            
-        } else{
-            const toastModalOldPasswordError = document.getElementById("errorOldPasswordToast");
-            const toastOldPasswordError = bootstrap.Toast.getOrCreateInstance(toastModalOldPasswordError);
-            toastOldPasswordError.show();
-            return false;
-        }
-    })
+	if (emailRegex.test(newEmail)) {
+		return fetch("http://localhost:3000/users")
+			.then((response) => response.json())
+			.then((users) => {
+				const foundUser = users.find((user) => user.email === newEmail);
+				if (foundUser) {
+					return 1; // El email ya existe
+				} else {
+					return 0; // El email no existe
+				}
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+				return 3;
+			});
+	} else {
+		return 2;
+	}
 }
 
-async function validatePassword(new_password, new_password2){
-    var passwordRegex = /^(?=.*[A-Z]).{8,}$/;
-  
-    if(passwordRegex.test(new_password)){
-      showPasswordIndicator(true);
-      if(new_password === new_password2){
-        return true;
-      }else{
-        return false;
-      }
-  
-    }else{
-      showPasswordIndicator(false);
-    }
-  }
-  
-  function showPasswordIndicator(valid) {
-    var indicator = document.getElementById("password-indicator");
-    
-    if (valid) {
-      indicator.style.color = "green";
-      indicator.textContent = "Password meets the requirements.";
-    } else {
-      indicator.style.color = "red";
-      indicator.textContent = "Password must have at least 8 characters and one uppercase letter.";
-    }
-  }
-  function deleteFromCookies(key) {
-    localStorage.removeItem(key);
+async function checkPassword(old_password) {
+	return fetch("http://localhost:3000/users")
+		.then((response) => response.json())
+		.then((users) => {
+			const user1 = users.find((u) => u.email === getFromCookies("userEmail"));
+
+			const toastModalError = document.getElementById("errorToast");
+			const toastError = bootstrap.Toast.getOrCreateInstance(toastModalError);
+			console.log(user1);
+			if (user1 && user1.password === old_password) {
+				console.log("Password changed succesfully");
+				return true;
+			} else {
+				const toastModalOldPasswordError = document.getElementById(
+					"errorOldPasswordToast"
+				);
+				const toastOldPasswordError = bootstrap.Toast.getOrCreateInstance(
+					toastModalOldPasswordError
+				);
+				toastOldPasswordError.show();
+				return false;
+			}
+		});
 }
 
-function storeChanges(user){
-    fetch(`http://localhost:3000/users/${user.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    })
-      .then(response => response.json())
-      .then(result => {
-        // Manejo de la respuesta del servidor
-        console.log(result);
-      })
-      .catch(error => {
-        // Manejo de errores
-        console.error('Error:', error);
-      });
-  
-  }
+async function validatePassword(new_password, new_password2) {
+	var passwordRegex = /^(?=.*[A-Z]).{8,}$/;
+
+	if (passwordRegex.test(new_password)) {
+		showPasswordIndicator(true);
+		if (new_password === new_password2) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		showPasswordIndicator(false);
+	}
+}
+
+function showPasswordIndicator(valid) {
+	var indicator = document.getElementById("password-indicator");
+
+	if (valid) {
+		indicator.style.color = "green";
+		indicator.textContent = "Password meets the requirements.";
+	} else {
+		indicator.style.color = "red";
+		indicator.textContent =
+			"Password must have at least 8 characters and one uppercase letter.";
+	}
+}
+function deleteFromCookies(key) {
+	localStorage.removeItem(key);
+}
+
+function storeChanges(user) {
+	fetch(`http://localhost:3000/users/${user.id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(user),
+	})
+		.then((response) => response.json())
+		.then((result) => {
+			// Manejo de la respuesta del servidor
+			console.log(result);
+		})
+		.catch((error) => {
+			// Manejo de errores
+			console.error("Error:", error);
+		});
+}
