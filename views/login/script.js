@@ -1,5 +1,14 @@
+window.onload = () => {
+	let id = getFromCookies("userId");
+	let email = getFromCookies("userEmail");
+	let userName = getFromCookies("userName");
+
+	if(id != null && email != null && userName != null) {
+		goToHome();
+	}
+}
+
 function goToHome() {
-	console.log("clicked");
 	window.location.href = "../matchmaking/matchmaking.html";
 }
 
