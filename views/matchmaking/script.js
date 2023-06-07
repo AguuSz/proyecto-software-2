@@ -87,13 +87,15 @@ function appendLobby(lobby) {
 	divCardHeader.classList.add("card-header", "pe-1");
 	divCardHeader.textContent = user.nickname + "'s lobby";
 
-	const closeButton = document.createElement("button");
-	closeButton.addEventListener("click", () => {
-		onCloseButtonClick(lobby.id);
-	});
-	closeButton.setAttribute("type", "button");
-	closeButton.classList.add("btn-close", "float-end", "show-if-admin");
-	divCardHeader.appendChild(closeButton);
+	if (getFromCookies("isAdmin") == "true") {
+		const closeButton = document.createElement("button");
+		closeButton.addEventListener("click", () => {
+			onCloseButtonClick(lobby.id);
+		});
+		closeButton.setAttribute("type", "button");
+		closeButton.classList.add("btn-close", "float-end");
+		divCardHeader.appendChild(closeButton);
+	}
 
 	// Crear el elemento div con la clase "card-body"
 	const divCardBody = document.createElement("div");
