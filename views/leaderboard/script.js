@@ -10,7 +10,7 @@ $(document).ready(function() {
         $.each(data, function(index, user) {
           var row = '<tr>' +
             '<td>' + (index + 1) + '</td>' +
-            '<td><a href="../my-profile/my-profile.html">' + user.nickname + '</a></td>' +
+            '<td><a href="../my-profile/my-profile.html?userId=' + user.id + '">' + user.nickname + '</a></td>' +
             '<td>' + user.wins + '</td>' +
             '<td>' + user.loses + '</td>' +
             '<td>' + user.mmr + '</td>' +
