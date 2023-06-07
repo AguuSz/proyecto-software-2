@@ -1,9 +1,9 @@
-function validateForm() {
+async function validateForm() {
   event.preventDefault();
   const toastModalSuccess = document.getElementById("successToast");
   const toastSuccess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
 
-  if(validateFields()){
+  if(await validateFields()){
     const newUser = {
       "nickname": getNickname(),
       "email": getEmail(),
@@ -11,14 +11,16 @@ function validateForm() {
       "mmr": 1000,
       "region": "SAM",
       "rank": "Silver",
-      "division": "5"
+      "division": "5",
+      "wins": "0",
+      "loses": "0"
     };
     toastSuccess.show();
     storeUser(newUser);
   }
 }
 
-function validateFields() {
+async function validateFields() {
   let errores = 0;
 
   if(validateNickname()){
@@ -28,10 +30,24 @@ function validateFields() {
     errores++;
   }
 
+  if(await validateDuplicatedNickname()){
+    const toastModalNicknameDuplicatedError = document.getElementById("errorNicknameDuplicatedToast");
+    const toastNicknameDuplicatedError = bootstrap.Toast.getOrCreateInstance(toastModalNicknameDuplicatedError);
+    toastNicknameDuplicatedError.show();
+    errores++;
+  }
+
   if(validateEmail()){
-    const toastModalEmailError = document.getElementById("errorEmailToast");
+    const toastModalEmailError = document.getElementById("errorEmailDuplicatedToast");
     const toastEmailError = bootstrap.Toast.getOrCreateInstance(toastModalEmailError);
     toastEmailError.show();
+    errores++;
+  }
+
+  if(await validateDuplicatedEmail()){
+    const toastModalEmailDuplicatedError = document.getElementById("errorEmailDuplicatedToast");
+    const toastEmailDuplicatedError = bootstrap.Toast.getOrCreateInstance(toastModalEmailDuplicatedError);
+    toastEmailDuplicatedError.show();
     errores++;
   }
 
@@ -49,9 +65,52 @@ function validateNickname(){
     return (getNickname().trim() === "");
 }
 
+async function validateDuplicatedNickname() {
+  const nickname = getNickname();
+
+  
+  return fetch('http://localhost:3000/users')
+    .then(response => response.json())
+    .then(users => {
+      
+      const foundUser = users.find(user => user.nickname === nickname);
+      if (foundUser) {
+        return true; // El nickname ya existe
+      } else {
+        return false; // El nickname no existe
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      return true; 
+    });
+}
+
+
 function validateEmail(){
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return (!emailRegex.test(getEmail()));
+}
+
+async function validateDuplicatedEmail() {
+  const email = getEmail();
+
+  
+  return fetch('http://localhost:3000/users')
+    .then(response => response.json())
+    .then(users => {
+      
+      const foundUser = users.find(user => user.email === email);
+      if (foundUser) {
+        return true; // El nickname ya existe
+      } else {
+        return false; // El nickname no existe
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      return true; 
+    });
 }
 
 function validatePassword(){
@@ -100,6 +159,9 @@ function storeUser(newUser){
       // Manejo de errores
       console.error('Error:', error);
     });
+
+    goToLoginWithDelay();
+
 }
 
 function getNickname(){
@@ -116,4 +178,14 @@ function getPassword1(){
 
 function getPassword2(){
   return document.getElementById("password2").value;
+}
+
+function goToLoginWithDelay() {
+  setTimeout(function() {
+  goToLogin();
+  }, 2000);
+}
+
+function goToLogin() {
+	window.location.href = "../login/login.html";
 }

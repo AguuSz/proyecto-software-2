@@ -1,156 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-		<link
-			rel="stylesheet"
-			href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"
-		/>
-		<title>Ranking Leaderboard</title>
-	</head>
-	<body>
-		<iframe
-			class="w-100"
-			src="../../components/nav_bar.html"
-			title="navBar"
-		></iframe>
-		<main>
-			<div class="container">
-				<div>
-					<h1 class="text-center">RANKING LEADERBOARD</h1>
-					<table
-						id="leaderboardTable"
-						class="table table-striped dt-responsive nowrap"
-					>
-						<thead>
-							<tr>
-								<th>Rank</th>
-								<th>Name</th>
-								<th>Wins</th>
-								<th>Loses</th>
-								<th>Points</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Player 1</td>
-								<td>5</td>
-								<td>2</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Player 2</td>
-								<td>3</td>
-								<td>1</td>
-								<td>75</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>Player 3</td>
-								<td>2</td>
-								<td>3</td>
-								<td>50</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>Player 4</td>
-								<td>1</td>
-								<td>4</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>John</td>
-								<td>5</td>
-								<td>1</td>
-								<td>15</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>Jane</td>
-								<td>4</td>
-								<td>2</td>
-								<td>12</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>Bob</td>
-								<td>3</td>
-								<td>3</td>
-								<td>9</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>Alice</td>
-								<td>2</td>
-								<td>4</td>
-								<td>6</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>Mike</td>
-								<td>1</td>
-								<td>5</td>
-								<td>3</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>Lisa</td>
-								<td>0</td>
-								<td>6</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td>11</td>
-								<td>David</td>
-								<td>0</td>
-								<td>6</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td>12</td>
-								<td>Susan</td>
-								<td>1</td>
-								<td>5</td>
-								<td>3</td>
-							</tr>
-							<tr>
-								<td>13</td>
-								<td>Tom</td>
-								<td>2</td>
-								<td>4</td>
-								<td>6</td>
-							</tr>
-							<tr>
-								<td>14</td>
-								<td>Sarah</td>
-								<td>3</td>
-								<td>3</td>
-								<td>9</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
-			<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-			<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-			<script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
-			<script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
-			<script src="script.js"></script>
-		</main>
-	</body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"
+    />
+    <title>Ranking Leaderboard</title>
+  </head>
+  <body>
+    <iframe
+      class="w-100"
+      src="../../components/nav_bar.html"
+      title="navBar"
+    ></iframe>
+    <main>
+      <div class="container">
+        <div>
+          <h1 class="text-center">RANKING LEADERBOARD</h1>
+          <table
+            id="leaderboardTable"
+            class="table table-striped dt-responsive nowrap"
+          >
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Wins</th>
+                <th>Loses</th>
+                <th>MMR</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
+      <script src="script.js"></script>
+    </main>
+  </body>
 </html>

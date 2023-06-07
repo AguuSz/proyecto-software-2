@@ -7,7 +7,17 @@ const toastError = bootstrap.Toast.getOrCreateInstance(toastModalError);
 const myModal = new bootstrap.Modal(document.getElementById("newLobbyModal"));
 
 function onCloseButtonClick(lobbyId) {
-	console.log("Se ha clickeado " + lobbyId);
+	let confirmationModal = new bootstrap.Modal(
+		document.getElementById("confirmDeleteLobbyModal")
+	);
+	confirmationModal.show();
+
+	let confirmDeleteLobbyBtn = document.getElementById("confirmDeleteLobbyBtn");
+	confirmDeleteLobbyBtn.addEventListener("click", () => {
+		deleteLobby(lobbyId);
+		confirmationModal.hide();
+	});
+	confirmDeleteLobbyBtn.removeEventListener("click", () => {});
 }
 
 if (toastTrigger) {
@@ -49,11 +59,9 @@ async function createLobby() {
 	};
 
 	try {
-		await storeLobby(newLobby);
-		// Para poder agregar el lobby es necesario que tenga informacion del usuario (para saber rank y division), pero esta info no esta presente en el lobby que se guarda en DB, por eso se setea
-		let tempLobby = newLobby;
-		tempLobby.user = user;
-		appendLobby(tempLobby);
+		let newLobbyStored = await storeLobby(newLobby);
+		newLobbyStored.user = user;
+		appendLobby(newLobbyStored);
 	} catch (error) {
 		console.log(error);
 	}
@@ -67,6 +75,7 @@ function appendLobby(lobby) {
 
 	// Crear el elemento div con la clase "col-2"
 	const divCol2 = document.createElement("div");
+	divCol2.id = lobby.id;
 	divCol2.classList.add("col-2");
 
 	// Crear el elemento div con la clase "card text-center px-0"
@@ -131,9 +140,11 @@ function appendLobby(lobby) {
 
 	// Crear el botón "Join lobby!" con la clase "btn btn-primary mt-3" y el elemento a con el atributo href
 	const aJoinLobby = document.createElement("a");
-	aJoinLobby.href = "#";
 	aJoinLobby.classList.add("btn", "btn-primary", "mt-3");
 	aJoinLobby.textContent = "Join lobby!";
+	aJoinLobby.addEventListener("click", () => {
+		onJoinLobbyClick(lobby.id);
+	});
 
 	// Crear el elemento div con la clase "row mx-auto" y agregar el botón "Join lobby!"
 	const divRow = document.createElement("div");
@@ -172,19 +183,6 @@ window.onload = () => {
 	getLobbies();
 };
 
-function getLobbies() {
-	fetch(`http://localhost:3000/lobbies?_expand=user`)
-		.then((response) => response.json())
-		.then((responseLobbies) => {
-			responseLobbies.forEach((lobby) => {
-				appendLobby(lobby);
-			});
-		})
-		.catch((error) => {
-			console.log("Error while trying to fetch data:", error);
-		});
-}
-
 function getUserById(id) {
 	return fetch(`http://localhost:3000/users/${id}`)
 		.then((response) => response.json())
@@ -194,6 +192,19 @@ function getUserById(id) {
 			} else {
 				return null;
 			}
+		})
+		.catch((error) => {
+			console.log("Error while trying to fetch data:", error);
+		});
+}
+
+function getLobbies() {
+	fetch(`http://localhost:3000/lobbies?_expand=user`)
+		.then((response) => response.json())
+		.then((responseLobbies) => {
+			responseLobbies.forEach((lobby) => {
+				appendLobby(lobby);
+			});
 		})
 		.catch((error) => {
 			console.log("Error while trying to fetch data:", error);
@@ -217,6 +228,38 @@ function storeLobby(lobby) {
 		.catch((error) => {
 			console.error("Error:", error);
 		});
+}
+
+function deleteLobby(lobbyId) {
+	const url = `http://localhost:3000/lobbies/${lobbyId}`;
+
+	return fetch(url, {
+		method: "DELETE",
+	})
+		.then((response) => response.json())
+		.then((result) => {
+			return result;
+		})
+		.then(() => {
+			deleteLobbyFromDOM(lobbyId);
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+}
+
+function deleteLobbyFromDOM(lobbyId) {
+	location.reload();
+
+	// TODO: Fixear que a la hora de borrar un 2do lobby, intente borrar tambien el primero pero este ya se ha eliminado, por lo que tira error.
+	let lobby = document.getElementById(lobbyId);
+	lobby.remove();
+}
+
+function onJoinLobbyClick(lobbyId) {
+	let joinLobbyToast = document.getElementById("joinLobbyToast");
+	let toast = new bootstrap.Toast(joinLobbyToast);
+	toast.show();
 }
 
 function storeInCookies(key, value) {
