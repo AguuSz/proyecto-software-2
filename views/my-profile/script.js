@@ -1,3 +1,18 @@
+var userId;
+var user;
+
+window.onload = async () => {
+    
+    localStorage.setItem(userId, 2) //Eliminar para el test
+    
+    userId = getFromCookies(userId)
+    user = await getUserById(userId)
+    switchTab(0)
+    
+}
+    
+
+
 function switchTab(index){
 
     const buttons = document.querySelectorAll('.col-2 .btn')
@@ -16,10 +31,14 @@ function switchTab(index){
 
     switch(index){
         case 0: tab.innerHTML = `
-            <div>
-            a
+            <div> Region: ` 
+            + user.region
+            +`
             </div>
-        ` 
+            <div>`
+             + user.rank + `
+            </div>
+            `
         break;
 
         case 1: tab.innerHTML = `
@@ -98,4 +117,23 @@ function switchTab(index){
 
     }
 
+}
+
+function getFromCookies(key){
+    return localStorage.getItem(key)
+}
+
+function getUserById(id) {
+	return fetch(`http://localhost:3000/users/${id}`)
+		.then((response) => response.json())
+		.then((user) => {
+			if (user) {
+				return user;
+			} else {
+				return null;
+			}
+		})
+		.catch((error) => {
+			console.log("Error while trying to fetch data:", error);
+		});
 }
