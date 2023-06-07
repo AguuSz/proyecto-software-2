@@ -6,6 +6,8 @@ const toastSucess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
 const toastError = bootstrap.Toast.getOrCreateInstance(toastModalError);
 const myModal = new bootstrap.Modal(document.getElementById("newLobbyModal"));
 
+var lobbiesArray = [];
+
 function onCloseButtonClick(lobbyId) {
 	let confirmationModal = new bootstrap.Modal(
 		document.getElementById("confirmDeleteLobbyModal")
@@ -40,6 +42,49 @@ function isNewLobbyFormValid() {
 	return platform != "Choose..." && region != "Choose...";
 }
 
+function applyFilters() {
+	var filteredLobbies = [];
+
+	var platform = document.forms["filterForm"]["filterPlatform"].value;
+	var rank = document.forms["filterForm"]["filterRank"].value;
+	var division = document.forms["filterForm"]["filterDivision"].value;
+	var region = document.forms["filterForm"]["filterRegion"].value;
+
+	lobbiesArray.forEach((lobby) => {
+		if (
+			(lobby.platform == platform || platform == "Choose...") &&
+			(lobby.region == region || region == "Choose...") &&
+			(lobby.user.rank == rank || rank == "Choose...") &&
+			(lobby.user.division == division || division == "Choose...")
+		) {
+			filteredLobbies.push(lobby);
+		}
+	});
+
+	removeLobbies();
+	filteredLobbies.forEach((lobby) => {
+		appendLobby(lobby);
+	});
+}
+
+function removeLobbies() {
+	let lobbies = document.getElementById("lobbys");
+	while (lobbies.firstChild) {
+		lobbies.removeChild(lobbies.firstChild);
+	}
+}
+
+function resetFilters() {
+	document.forms["filterForm"]["filterPlatform"].value = "Choose...";
+	document.forms["filterForm"]["filterRank"].value = "Choose...";
+	document.forms["filterForm"]["filterDivision"].value = "Choose...";
+	document.forms["filterForm"]["filterRegion"].value = "Choose...";
+	removeLobbies();
+	lobbiesArray.forEach((lobby) => {
+		appendLobby(lobby);
+	});
+}
+
 // Funcion que se llama cuando el usuario clickea en "Create new Lobby" en el Modal.
 async function createLobby() {
 	// Obtenemos los valores del form
@@ -62,6 +107,7 @@ async function createLobby() {
 		let newLobbyStored = await storeLobby(newLobby);
 		newLobbyStored.user = user;
 		appendLobby(newLobbyStored);
+		lobbiesArray.push(newLobbyStored);
 	} catch (error) {
 		console.log(error);
 	}
@@ -205,6 +251,7 @@ function getLobbies() {
 		.then((response) => response.json())
 		.then((responseLobbies) => {
 			responseLobbies.forEach((lobby) => {
+				lobbiesArray.push(lobby);
 				appendLobby(lobby);
 			});
 		})

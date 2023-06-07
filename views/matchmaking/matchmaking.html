@@ -26,27 +26,28 @@
 					<h1>Matchmaking filters</h1>
 					<p>Find a lobby that suits you</p>
 				</div>
-				<div class="row">
+				<form class="row" id="filterForm">
 					<div class="col-md-2">
 						<label for="filterPlatform" class="form-label">Platform</label>
 						<select id="filterPlatform" class="form-select">
 							<option selected disabled>Choose...</option>
-							<option value="pc">PC</option>
-							<option value="ps4">PS4</option>
-							<option value="xbox">XBOX</option>
+							<option value="PC">PC</option>
+							<option value="PS4">PS4</option>
+							<option value="XBOX">XBOX</option>
 						</select>
 					</div>
 					<div class="col-md-3">
 						<label for="filterRank" class="form-label">Rank</label>
 						<select id="filterRank" class="form-select">
 							<option selected disabled>Choose...</option>
-							<option value="bronze">Bronze</option>
-							<option value="silver">Silver</option>
-							<option value="gold">Gold</option>
-							<option value="platinum">Platinum</option>
-							<option value="diamond">Diamond</option>
-							<option value="champion">Champion</option>
-							<option value="grand-champion">Grand Champion</option>
+							<option value="Bronze">Bronze</option>
+							<option value="Silver">Silver</option>
+							<option value="Gold">Gold</option>
+							<option value="Platinum">Platinum</option>
+							<option value="Diamond">Diamond</option>
+							<option value="Champion">Champion</option>
+							<option value="Grand Champion">Grand Champion</option>
+							<option value="Supersonic Legend">Supersonic Legend</option>
 						</select>
 					</div>
 					<div class="col-md-3">
@@ -63,27 +64,29 @@
 						<label for="filterRegion" class="form-label">Region</label>
 						<select id="filterRegion" class="form-select">
 							<option selected disabled>Choose...</option>
-							<option value="eu">EU</option>
-							<option value="na">NA</option>
-							<option value="sam">SAM</option>
-							<option value="oce">OCE</option>
-							<option value="asia">ASIA</option>
+							<option value="EU">EU</option>
+							<option value="NA">NA</option>
+							<option value="SAM">SAM</option>
+							<option value="OCE">OCE</option>
+							<option value="ASIA">ASIA</option>
 						</select>
 					</div>
-					<div class="col-md-2">
-						<label for="filterMMR" class="form-label">MMR</label>
-						<input type="number" class="form-control" id="filterMMR" />
-					</div>
-				</div>
+				</form>
 				<div class="row">
 					<div class="col text-center mt-4">
 						<button
 							type="button"
 							class="btn btn-primary me-2"
-							data-bs-toggle="modal"
-							data-bs-target="#confirmDeleteLobbyModal"
+							onclick="applyFilters()"
 						>
 							Apply
+						</button>
+						<button
+							type="button"
+							class="btn btn-primary me-2"
+							onclick="resetFilters()"
+						>
+							Reset
 						</button>
 						<button
 							type="button"
