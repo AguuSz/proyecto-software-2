@@ -156,32 +156,36 @@ function switchTab(index) {
 						<label for="new_password" class="form-label">New password</label>
 						<input type="password" class="form-control" id="new_password" oninput="showPasswordIndicator(this.value.match(/^(?=.*[A-Z]).{8,}$/))">
 						</div>
+						<div id="password-indicator"></div>
 					</div>
 
 					<div class="col-4">
 						<div class="mb-3">
-						<label for="new_password" class="form-label">Current password</label>
-						<input type="password" class="form-control" id="new_password">
+						<label for="old_password" class="form-label">Current password</label>
+						<input type="password" class="form-control" id="old_password">
 						</div>
 					</div>
-
+				</div>
+				<div class="row">
 					<div class="col-4">
 						<div class="mb-3">
-						<label for="new_password" class="form-label">Repeat current password</label>
+						<label for="new_password2" class="form-label">Repeat new password password</label>
 						<input type="password" class="form-control" id="new_password2">
 						</div>
 					</div>
 				</div>
 
 				<div class="d-flex justify-content-end">
-					<button type="button" class="btn btn-success" onClick="editProfile()">
+					<button type="button" class="btn btn-success" id="save-button">
 						Save
 					</button>
 				</div>
 				
                 </form>
 		    </div>
-            `;
+            `
+			const save_button = document.getElementById("save-button");
+			save_button.addEventListener("click", editProfile)
 			break;
 	}
 }
@@ -256,7 +260,8 @@ function createSettingsButton() {
 	profile_menu.appendChild(settings_btn);
 }
 
-async function editProfile() {
+async function editProfile(event) {
+	event.preventDefault();
 	let tempUser = { ...user };
 	var changesMade = false;
 
@@ -329,18 +334,19 @@ async function editProfile() {
 	}
 
 	if (changesMade) {
-		console.log(tempUser);
 		storeChanges(tempUser);
 		const toastModalSuccess = document.getElementById("successToast");
 		const toastSuccess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
-		toastSuccess.show();
+		var currentToast = toastSuccess;
+		switchTab(0)
 	} else {
 		const toastModalNoChangesMade = document.getElementById("NoChangesMade");
 		const toastNoChangesMade = bootstrap.Toast.getOrCreateInstance(
 			toastModalNoChangesMade
 		);
-		toastNoChangesMade.show();
+		var currentToast = toastNoChangesMade;
 	}
+	currentToast.show();
 }
 
 async function validateDuplicatedNickname(newNickname) {
