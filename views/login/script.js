@@ -31,10 +31,12 @@ window.onload = () => {
   
 		const toastModalError = document.getElementById("errorToast");
 		const toastError = bootstrap.Toast.getOrCreateInstance(toastModalError);
+		const toastModalBan = document.getElementById("banToast");
+		const toastBan = bootstrap.Toast.getOrCreateInstance(toastModalBan);
   
 		if (user) {
 		  if (user.isBanned) {
-			toastError.show();
+			toastBan.show();
 		  } else if (user.password === password) {
 			storeInCookies("userId", user.id);
 			storeInCookies("userEmail", user.email);
