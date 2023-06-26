@@ -26,6 +26,7 @@ window.onload = async () => {
 function switchTab(index) {
 	const buttons = document.querySelectorAll(".col-2 .btn");
 	buttons.forEach((button, i) => {
+		
 		if (i === index) {
 			button.classList.remove("btn-secondary");
 			button.classList.add("btn-primary");
@@ -53,7 +54,7 @@ function switchTab(index) {
             `;
 			break;
 
-		case 1:
+		case 2:
 			getQuickProfile();
 			tab.innerHTML =
 				`
@@ -108,7 +109,7 @@ function switchTab(index) {
             </table>
         `;
 			break;
-		case 2:
+		case 3:
 			try {
 				document.getElementById("quick_prof").remove();
 			} catch {
@@ -256,7 +257,7 @@ function createSettingsButton() {
 	const settings_btn = document.createElement("button");
 	settings_btn.classList.add("btn", "btn-secondary", "w-100");
 	settings_btn.textContent = "Settings";
-	settings_btn.addEventListener("click", () => switchTab(2));
+	settings_btn.addEventListener("click", () => switchTab(3));
 	profile_menu.appendChild(settings_btn);
 }
 
