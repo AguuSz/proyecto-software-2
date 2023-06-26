@@ -12,9 +12,17 @@ window.onload = async () => {
 		userId = current_user;
 	}
 
-	user = await getUserById(userId);
+	if(userId == null){
+		
+		const modalLoggedOut = new bootstrap.Modal(document.getElementById("loggedOutModal"))
+		modalLoggedOut.show();
+	}
 
-	if (current_user == userId) {
+	user = await getUserById(userId);
+	
+	
+
+	if (current_user == userId && current_user != null) {
 		createSettingsButton();
 	}
 
@@ -465,4 +473,7 @@ function storeChanges(user) {
 			// Manejo de errores
 			console.error("Error:", error);
 		});
+}
+function goToLogin(){
+	window.location.href = "../login/login.html"
 }
