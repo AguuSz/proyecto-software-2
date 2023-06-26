@@ -12,15 +12,14 @@ window.onload = async () => {
 		userId = current_user;
 	}
 
-	if(userId == null){
-		
-		const modalLoggedOut = new bootstrap.Modal(document.getElementById("loggedOutModal"))
+	if (userId == null) {
+		const modalLoggedOut = new bootstrap.Modal(
+			document.getElementById("loggedOutModal")
+		);
 		modalLoggedOut.show();
 	}
 
 	user = await getUserById(userId);
-	
-	
 
 	if (current_user == userId && current_user != null) {
 		createSettingsButton();
@@ -34,7 +33,6 @@ window.onload = async () => {
 function switchTab(index) {
 	const buttons = document.querySelectorAll(".col-2 .btn");
 	buttons.forEach((button, i) => {
-		
 		if (i === index) {
 			button.classList.remove("btn-secondary");
 			button.classList.add("btn-primary");
@@ -192,9 +190,9 @@ function switchTab(index) {
 				
                 </form>
 		    </div>
-            `
+            `;
 			const save_button = document.getElementById("save-button");
-			save_button.addEventListener("click", editProfile)
+			save_button.addEventListener("click", editProfile);
 			break;
 	}
 }
@@ -347,7 +345,7 @@ async function editProfile(event) {
 		const toastModalSuccess = document.getElementById("successToast");
 		const toastSuccess = bootstrap.Toast.getOrCreateInstance(toastModalSuccess);
 		var currentToast = toastSuccess;
-		switchTab(0)
+		location.reload();
 	} else {
 		const toastModalNoChangesMade = document.getElementById("NoChangesMade");
 		const toastNoChangesMade = bootstrap.Toast.getOrCreateInstance(
@@ -474,6 +472,6 @@ function storeChanges(user) {
 			console.error("Error:", error);
 		});
 }
-function goToLogin(){
-	window.location.href = "../login/login.html"
+function goToLogin() {
+	window.location.href = "../login/login.html";
 }
