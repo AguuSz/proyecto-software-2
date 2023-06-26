@@ -13,7 +13,8 @@ async function validateForm() {
       "rank": "Silver",
       "division": "5",
       "wins": "0",
-      "loses": "0"
+      "loses": "0",
+      "isBanned": false
     };
     toastSuccess.show();
     storeUser(newUser);
