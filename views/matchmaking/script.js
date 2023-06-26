@@ -228,8 +228,19 @@ function appendLobby(lobby) {
 
 // Funcion que obtiene los lobbies apenas se carga la pagina
 window.onload = () => {
+	let currentUserId = getFromCookies("userId");
+	if (currentUserId == null) {
+		const modalLoggedOut = new bootstrap.Modal(
+			document.getElementById("loggedOutModal")
+		);
+		modalLoggedOut.show();
+	}
 	getLobbies();
 };
+
+function goToLogin() {
+	window.location.href = "../login/login.html";
+}
 
 function getUserById(id) {
 	return fetch(`http://localhost:3000/users/${id}`)
